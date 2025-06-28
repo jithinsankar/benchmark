@@ -1,0 +1,9 @@
+# requirements.txt
+
+ollama
+psutil
+requests
+# Platform-specific for Windows (PyInstaller will handle this on Windows builds)
+wmi; platform_system=="Windows"
+# For NVIDIA GPU info (optional dependency)
+pynvml; platform_system=="Windows" or platform_system=="Linux"
