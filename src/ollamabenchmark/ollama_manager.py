@@ -85,6 +85,44 @@ def get_ollama_executable_path() -> Optional[str]:
                 return exe_path
     return None
 
+def get_ollama_version() -> Optional[str]:
+    """
+    Gets the installed Ollama CLI version.
+    Returns the version string or None if not found.
+    """
+    ollama_exe_path = get_ollama_executable_path()
+    if not ollama_exe_path:
+        logging.warning("Ollama executable not found, cannot get version.")
+        return None
+    
+    try:
+        # The command is just the executable path plus "--version"
+        command = [ollama_exe_path, "--version"]
+        result = subprocess.run(command, capture_output=True, text=True, check=True)
+        
+        # Example output: "ollama version is 0.1.30"
+        output = result.stdout.strip()
+        
+        # Extract version number using regex
+        match = re.search(r"(\d+\.\d+\.\d+)", output)
+        if match:
+            version = match.group(1)
+            logging.info(f"Found Ollama version: {version}")
+            return version
+        else:
+            logging.warning(f"Could not parse Ollama version from output: {output}")
+            return None
+            
+    except FileNotFoundError:
+        logging.error("Ollama executable not found at the path returned by get_ollama_executable_path.")
+        return None
+    except subprocess.CalledProcessError as e:
+        logging.error(f"Error getting Ollama version: {e.stderr}")
+        return None
+    except Exception as e:
+        logging.error(f"An unexpected error occurred while getting Ollama version: {e}")
+        return None
+
 def check_ollama_server_status(host: str = OLLAMA_DEFAULT_HOST) -> bool:
     """Checks if the Ollama server is running and accessible."""
     try:
