@@ -153,6 +153,10 @@ if __name__ == "__main__":
     import argparse
     import json
     from ollamabenchmark.submission_client import submit_benchmark_results
+    from ollamabenchmark.version_checker import check_for_updates_and_exit
+
+    # --- Version Check ---
+    check_for_updates_and_exit("yourusername/benchmark")
 
     parser = argparse.ArgumentParser(description="Run Ollama model benchmarks.")
     parser.add_argument("model_name", type=str, help="The Ollama model to benchmark (e.g., 'gemma3:1b').")
