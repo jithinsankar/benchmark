@@ -170,10 +170,14 @@ if __name__ == "__main__":
     if results and "error" not in results:
         upload_choice = input("\nDo you want to upload these results to the Ollama Benchmark API? (Y/n): ").strip().lower()
         if upload_choice in ["", "y", "yes"]:
-            logging.info("Uploading results...")
-            if submit_benchmark_results(results):
-                logging.info("Results uploaded successfully!")
+            token = input("Please enter your submission token: ").strip()
+            if not token:
+                logging.error("Submission token cannot be empty.")
             else:
-                logging.error("Failed to upload results.")
+                logging.info("Uploading results...")
+                if submit_benchmark_results(results, token):
+                    logging.info("Results uploaded successfully!")
+                else:
+                    logging.error("Failed to upload results.")
         else:
             logging.info("Results not uploaded.")

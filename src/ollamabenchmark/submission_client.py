@@ -8,12 +8,16 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
 WEB_API_SUBMIT_URL = "https://api.ollamabenchmark.org/submit" # Placeholder URL
 
-def submit_benchmark_results(payload: Dict[str, Any]) -> bool:
+def submit_benchmark_results(payload: Dict[str, Any], token: str) -> bool:
     """Submits formatted benchmark results to the web API."""
     logging.info("Attempting to submit results to web API...")
     try:
+        # Add the token to the payload
+        payload_with_token = payload.copy()
+        payload_with_token['submission_token'] = token
+
         headers = {"Content-Type": "application/json"}
-        response = requests.post(WEB_API_SUBMIT_URL, json=payload, headers=headers, timeout=30)
+        response = requests.post(WEB_API_SUBMIT_URL, json=payload_with_token, headers=headers, timeout=30)
         response.raise_for_status() # Raise an HTTPError for bad responses (4xx or 5xx)
         logging.info("Results submitted successfully!")
         logging.debug(f"Server response: {response.json()}")
@@ -40,4 +44,4 @@ if __name__ == "__main__":
         "tasks": [{"task_id": "test", "tokens_per_second_overall": 50}]
     }
     logging.info("This is a dummy submission client. It will likely fail without a live API.")
-    submit_benchmark_results(dummy_results)
+    submit_benchmark_results(dummy_results, "your_dummy_token")
