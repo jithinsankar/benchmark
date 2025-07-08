@@ -1,22 +1,46 @@
+# Virtual Environment
 .venv/
+env/
+venv/
 .env
+
+# Python Bytecode and Compilation
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.pkl
-*.db
-*.sqlite3
-*.log
-*.egg-info/
-*.egg
-*.DS_Store
-*.coverage
-*.mypy_cache/
-*.pytest_cache/
-*.tox/
-*.dist-info/
-*.whl
-*.zip
-*.tar.gz
-*.rar
+
+# Generated Files
+*.pkl            # Python pickle files (serialized objects)
+*.db             # Generic database files (like SQLite)
+*.sqlite3        # Specific to SQLite3 databases
+*.log            # Log files
+.coverage        # Coverage.py results file
+
+# Package Distribution
+dist/            # Python distributions (wheels, source tarballs)
+build/           # Python build directory
+*.egg-info/      # Setuptools .egg-info directories
+*.egg            # Setuptools .egg files
+*.whl            # Python wheels
+*.zip            # Zipped archives (often for distributions)
+*.tar.gz         # Gzipped tar archives (often for distributions)
+*.rar            # Rar archives (less common for Python packages, but included if you use them)
+*.dist-info/     # Modern equivalent to .egg-info for wheels (though often contained within dist/)
+
+# IDE and Editor Files
+.vscode/         # VS Code specific files
+.idea/           # PyCharm/IntelliJ IDEA specific files
+*.sublime-project
+*.sublime-workspace
+.DS_Store        # macOS specific files
+Thumbs.db        # Windows specific files
+
+# Testing and Type Checking
+.pytest_cache/   # pytest cache directory
+.mypy_cache/     # mypy static analysis cache
+.tox/            # Tox virtual environments
+htmlcov/         # Coverage.py HTML reports
+
+# Jupyter Notebook Specifics 
+.ipynb_checkpoints/

@@ -6,7 +6,7 @@ from typing import Dict, Any
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
-WEB_API_SUBMIT_URL = "https://api.ollamabenchmark.org/submit" # Placeholder URL
+WEB_API_SUBMIT_URL = "https://ollamabenchmark-submit.azurewebsites.net/api/submit_api" # Placeholder URL
 
 def submit_benchmark_results(payload: Dict[str, Any], token: str) -> bool:
     """Submits formatted benchmark results to the web API."""

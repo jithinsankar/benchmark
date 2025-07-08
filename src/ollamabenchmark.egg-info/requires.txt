@@ -1,0 +1,9 @@
+ollama
+psutil
+requests
+
+[:platform_system == "Windows"]
+wmi
+
+[:platform_system == "Windows" or platform_system == "Linux"]
+pynvml
