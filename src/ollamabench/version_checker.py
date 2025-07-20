@@ -7,10 +7,10 @@ import sys
 
 def get_current_version() -> Optional[str]:
     """
-    Gets the currently installed version of the ollamabenchmark package.
+    Gets the currently installed version of the ollamabench package.
     """
     try:
-        return metadata.version("ollamabenchmark")
+        return metadata.version("ollamabench")
     except metadata.PackageNotFoundError:
         logging.warning("Could not determine the current version of the package.")
         return None

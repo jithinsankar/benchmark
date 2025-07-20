@@ -1,4 +1,4 @@
-# ollamabenchmark/submission_client.py
+# ollamabench/submission_client.py
 import requests
 import json
 import logging
@@ -6,8 +6,11 @@ from typing import Dict, Any
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
-WEB_API_SUBMIT_URL = "https://ollamabenchmark-submit.azurewebsites.net/api/submit_api" # Placeholder URL
-WEB_API_SUBMIT_URL = "http://localhost:7071/api/submit_api"  # Local development URL
+# WEB_API_SUBMIT_URL = "https://ollamabenchmark-submit.azurewebsites.net/api/submit_api" # Placeholder URL
+# WEB_API_SUBMIT_URL = "http://localhost:7071/api/submit_api"  # Local development URL
+WEB_API_SUBMIT_URL = "https://api.ollamabench.dev/api/submit_api"  # Prod development URL
+
+
 def submit_benchmark_results(payload: Dict[str, Any], token: str) -> bool:
     """Submits formatted benchmark results to the web API."""
     logging.info("Attempting to submit results to web API...")

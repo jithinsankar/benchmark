@@ -1,4 +1,4 @@
-# ollamabenchmark/sys_info.py
+# ollamabench/sys_info.py
 import platform
 import psutil
 import logging

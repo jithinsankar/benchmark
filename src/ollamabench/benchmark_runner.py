@@ -4,9 +4,9 @@ import logging
 import ollama 
 from typing import Dict, Any, List
 
-from ollamabenchmark.ollama_manager import ensure_ollama_ready, pull_ollama_model, get_ollama_version
-from ollamabenchmark.sys_info import get_system_info
-from ollamabenchmark.benchmark_tasks import BENCHMARK_TASKS
+from ollamabench.ollama_manager import ensure_ollama_ready, pull_ollama_model, get_ollama_version
+from ollamabench.sys_info import get_system_info
+from ollamabench.benchmark_tasks import BENCHMARK_TASKS
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 
@@ -152,8 +152,8 @@ def run_benchmark(model_name: str, num_warmup_runs: int = 1) -> Dict[str, Any]:
 if __name__ == "__main__":
     import argparse
     import json
-    from ollamabenchmark.submission_client import submit_benchmark_results
-    from ollamabenchmark.version_checker import check_for_updates_and_exit
+    from ollamabench.submission_client import submit_benchmark_results
+    from ollamabench.version_checker import check_for_updates_and_exit
 
     # --- Version Check ---
     check_for_updates_and_exit("yourusername/benchmark")

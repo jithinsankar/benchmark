@@ -1,4 +1,4 @@
-# ollamabenchmark/ollama_manager.py
+# ollamabench/ollama_manager.py
 import platform
 import subprocess
 import os
